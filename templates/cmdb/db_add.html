@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|资产管理|添加{% endblock %}
+
+{% block container %}
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>审核列表<a class="icon-info-sign pull-right" data-content="先审核通过后，再执行任务。审核或执行不通过，要注意检查结果中的错误信息！"  data-toggle="popover-left" id="popover-left" title=""> </a>
+      </div>
+        <div class="col-md-offset-4"></div>
+        <div class="widget-content padded">
+
+                    <form class="form-horizontal" method="post" action="{% url 'cmdb:db-add' %}">
+                         {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-white" type="reset">重置</button>
+                        <button class="btn btn-primary" type="submit" id="report">提交</button>
+                    </form>
+                </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

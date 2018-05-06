@@ -1,0 +1,139 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|SQL审核|结果{% endblock %}
+
+{% block extrastyle %}
+    <link href="{% static 'css/plugins/codemirror/codemirror.css' %}" rel="stylesheet">
+    <link href="{% static 'css/plugins/codemirror/duotone-light.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block container %}
+
+{% if messages %}
+    <ul class="alert alert-success">
+        {% for message in messages %}
+            <button class="close" data-dismiss="alert" type="button">&times;</button>{{ message }}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>审核列表<a class="icon-info-sign pull-right" data-content="先审核通过后，再执行任务。审核或执行不通过，要注意检查结果中的错误信息！"  data-toggle="popover-left" id="popover-left" title=""> </a>
+      </div>
+        <div class="col-md-offset-4"></div>
+      <div class="widget-content padded">
+        <form class="form-horizontal" >
+
+                <div class="pull-left">
+                    <a onclick="fnClickAddRow();" href="{% url 'sqlaudit:sql-add' %}" class="btn btn-primary ">SQL上报</a>
+                </div>
+
+                 <table id="table_server" class="table table-bordered table-striped table-hover">
+                            <thead>
+                               <tr>
+                                    <th>ID</th>
+                                    <th>TID</th>
+                                    <th>stage</th>
+                                    <th>错误级别</th>
+                                    <th>审核状态</th>
+                                    <th>错误信息</th>
+                                    <th>sql</th>
+                                    <th>影响行数</th>
+                                    <th>序列号</th>
+                                    <th>备份名称</th>
+                                    <th>执行时间</th>
+                                    <th>sqlid</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            {%  for report in object_list %}
+                                    <tr class="gradeX">
+                                        <td>{{ report.0 }}</td>
+                                        <td>{{ report.1 }}</td>
+                                        <td>{{ report.2 }}</td>
+                                        {% if report.3 == 0 %}
+                                            <td><p><span class="label label-primary">审核通过</span></p></td>
+                                        {% elif report.3 == 1 %}
+                                            <td><p><span class="label label-warning">警告</span></p></td>
+                                        {% else %}
+                                            <td><p><span class="label label-danger">危险</span></p></td>
+                                        {% endif %}
+                                        <td>{{ report.4 }}</td>
+                                        <td>{{ report.5 }}</td>
+                                        <td>{{ report.6 }}</td>
+                                        <td>{{ report.7 }}</td>
+                                        <td>{{ report.8 }}</td>
+                                        <td>{{ report.9 }}</td>
+                                        <td>{{ report.10 }}</td>
+                                        <td>{{ report.12 }}</td>
+                                    </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block jscripts %}
+ <!-- jQuery UI -->
+    <script src="{% static 'js/plugins/datatables01/jquery.datatables.min.js' %}"></script>
+    <script src="{% static 'js/plugins/datatables01/datatables.bootstrap.min.js' %}"></script>
+
+ <script>
+            $.ajaxSetup({
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+
+        var dt = $('.dataTables-example').DataTable({
+                dom: '<"html5buttons"B>lTfgitp',
+                ordering: false,
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+
+
+        $('.dataTables-example').on( 'click', 'button#execute', function () {
+                    var data =  dt.row( $(this).parents('tr') ).data();
+                    console.log(data)
+                        $.ajax({
+                            data:{"xlh":data[7],"db_bak":data[8],"sql_id":data[10]},
+                            url:"#",
+                            type:'post',
+                            timeout:"3000",
+                            cache:"false",
+                            success:function(str){
+                                swal("回滚完成！");
+                                    //dt.row().remove().draw( false );//删除这行的数据
+                            },
+                            error:function(err){
+                                swal("服务器失败！");
+                            }
+                        });
+                });
+
+    </script>
+{% endblock %}

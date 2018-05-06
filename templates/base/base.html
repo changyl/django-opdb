@@ -1,0 +1,290 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+{#    <link href="{% static 'stylesheets/bootstrap.min.css' %}" rel="stylesheet">#}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/se7en-font.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/isotope.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/jquery.fancybox.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/fullcalendar.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/wizard.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/select2.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/morris.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/datatables.css' %}" rel="stylesheet">
+    <link href="{% static 'stylesheets/datepicker.css' %}" rel="stylesheet">
+	<link href="{% static 'stylesheets/timepicker.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/colorpicker.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/bootstrap-switch.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/daterange-picker.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/typeahead.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/summernote.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/pygments.css' %}" media="all" rel="stylesheet" type="text/css" />
+	<link href="{% static 'stylesheets/style.css' %}" media="all" rel="stylesheet" type="text/css" />
+    {% block extrastyle %}
+    {% endblock %}
+<style type="text/css">
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+</style>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  </head>
+  <body>
+    <div class="modal-shiftfix">
+      <!-- Navigation -->
+      <div class="navbar navbar-fixed-top scroll-hide">
+        <div class="container-fluid top-bar">
+          <div class="pull-right">
+            <ul class="nav navbar-nav pull-right">
+              <li class="dropdown notifications hidden-xs">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span aria-hidden="true" class="se7en-flag"></span>
+                  <div class="sr-only">
+                    Notifications
+                  </div>
+                  <p class="counter">
+                    4
+                  </p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">
+                    <div class="notifications label label-info">
+                      New
+                    </div>
+                    <p>
+                      New user added: Jane Smith
+                    </p></a>
+
+                  </li>
+                  <li><a href="#">
+                    <div class="notifications label label-info">
+                      New
+                    </div>
+                    <p>
+                      Sales targets available
+                    </p></a>
+
+                  </li>
+                  <li><a href="#">
+                    <div class="notifications label label-info">
+                      New
+                    </div>
+                    <p>
+                      New performance metric added
+                    </p></a>
+
+                  </li>
+                  <li><a href="#">
+                    <div class="notifications label label-info">
+                      New
+                    </div>
+                    <p>
+                      New growth data available
+                    </p></a>
+
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown user hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img width="34" height="34" src="{% static 'images/avatar-female.jpg ' %}" />{{ username }}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">
+                    <i class="icon-user"></i>我的账户</a>
+                  </li>
+                  <li><a href="#">
+                    <i class="icon-gear"></i>账户设置</a>
+                  </li>
+                  <li><a href="{% url 'users:logout' %}">
+                    <i class="icon-signout"></i>注销</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <button class="navbar-toggle"></button><a class="logo" href="#"></a>
+        </div>
+        <div class="container-fluid main-nav clearfix">
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <a class="current" href="#"><span aria-hidden="true" class="se7en-home"></span>仪表盘</a>
+              </li>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="se7en-feed"></span>资产管理<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li>
+                        <a href="{% url 'cmdb:idc-list' %}">IDC管理</a>
+                      </li>
+                      <li>
+                        <a href="{% url 'cmdb:db-list' %}">数据库管理</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="iconfont icon-ziyuanguanli"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ziyuanguanli"></use></svg></span>资源管理<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">单实例MySQL</a>
+                  </li>
+                  <li>
+                    <a href="#">高可用MHA</a>
+                  </li>
+                  <li>
+                    <a href="#">高可用PXC</a>
+                  </li>
+                  <li><a href="#">
+                    <span class="notifications label label-warning"></span>
+                    <p>
+                      DBproxy
+                    </p></a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="iconfont icon-shenhe"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-SQLshenhe"></use></svg></span>SQL审核<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'sqlaudit:sql-add' %}">
+                    <span class="notifications label label-warning">New</span>
+                    <p>
+                      SQL上报
+                    </p></a>
+                  </li>
+                  <li>
+                    <a href="{% url 'sqlaudit:sql-list' %}">审核列表</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'sqlaudit:sql-history-list' %}">审核历史</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="se7en-tables"></span>表在线变更<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">SQL上报</a>
+                  </li>
+                  <li>
+                    <a href="#">审核列表</a>
+                  </li>
+                   <li>
+                    <a href="#">执行进度</a>
+                  </li>
+                  <li><a href="#">
+                    <div class="notifications label label-warning">
+                      New
+                    </div>
+                    <p>
+                      审核历史
+                    </p></a>
+
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#">
+                <span aria-hidden="true" class="icon icon-jiankong"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiankong"></use></svg></span>监控</a>
+              </li>
+
+              <li><a href="#">
+                <span aria-hidden="true" class="se7en-charts"></span>慢查询管理</a>
+              </li>
+
+              <li><a href="#">
+                <span aria-hidden="true" class="icon icon-beifenguanli"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-beifenguanli"></use></svg></span>备份管理</a>
+              </li>
+
+
+              <li><a href="#">
+                <span aria-hidden="true" class="icon icon-test"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-8"></use></svg></span>执行计划审核</a>
+              </li>
+
+              <li><a href="#">
+                <span aria-hidden="true" class="icon icon-test"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xitongceshishuju"></use></svg></span>基准测试管理</a>
+              </li>
+
+
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="icon icon-cog"></span>权限管理<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'users:group-list' %}">
+                    <span class="notifications label label-warning">New</span>
+                    <p>
+                      用户组管理
+                    </p></a>
+
+                  </li>
+                  <li>
+                    <a href="{% url 'users:user-list' %}">用户管理</a>
+                  </li>
+
+                  <li><a href="login1.html">
+                    <span class="notifications label label-warning">New</span>
+                    <p>
+                      菜单管理
+                    </p></a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End Navigation -->
+      <div class="container-fluid main-content">
+      <div class="nav-collapse">
+          {% block container %}
+          {% endblock %}
+      </div>
+      </div>
+    </div>
+  </body>
+
+    <script src="{% static 'javascripts/jquery.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery-ui.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/raphael.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/selectivizr-min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.mousewheel.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.vmap.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.vmap.sampledata.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.vmap.world.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.bootstrap.wizard.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/fullcalendar.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/gcal.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.easy-pie-chart.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/excanvas.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.isotope.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/isotope_extras.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/modernizr.custom.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.fancybox.pack.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/select2.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/styleswitcher.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/wysiwyg.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/summernote.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.inputmask.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.validate.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap-fileupload.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap-datepicker.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap-timepicker.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap-colorpicker.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/bootstrap-switch.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/typeahead.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/daterange-picker.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/date.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/morris.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/skycons.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/fitvids.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/jquery.sparkline.min.js' %}" type="text/javascript"></script>
+	<script src="{% static 'javascripts/respond.js' %}" type="text/javascript"></script>
+    <script src="{% static 'javascripts/iconfont.js' %}" type="text/javascript"></script>
+    {% block jscripts %}{% endblock %}
+</html>

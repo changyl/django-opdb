@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|资产管理|变更{% endblock %}
+
+{% block container %}
+<div class="row">
+  <div class="col-lg-3 col-md-offset-4">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>IDC修改
+      </div>
+      <div class="widget-content padded">
+                    <form class="form-horizontal" method="post" action="{% url 'cmdb:idc-update' idc.id %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-white" type="reset">重置</button>
+                        <button class="btn btn-primary" type="submit" id="report">提交</button>
+                    </form>
+             </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

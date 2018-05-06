@@ -1,0 +1,110 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|系统管理|组添加{% endblock %}
+{% block extrastyle %}
+    <link href="{% static 'lou-multi-select/css/multi-select.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block container %}
+<div class="row">
+  <div class="col-lg-10 col-md-offset-1">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>组添加
+      </div>
+      <div class="widget-content padded">
+        <form class="form-horizontal col-md-offset-2" method="post" action="{% url 'users:group-add' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                     {{ form.groupname.errors }}
+                    <label class="control-label col-md-2" for="{{ form.groupname.id_for_label }}">组名称:</label>
+                    <div class="col-md-7">
+                     {{ form.groupname }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                     {{ form.menus.errors }}
+                     <label class="control-label col-md-2" for="{{ form.menus.id_for_label }}">菜单与权限控制:</label>
+                    <div class="col-md-6">
+                     {{ form.menus }}
+                     <a id="menus-select-all">全选</a>
+                     <a id="menus-deselect-all" class="col-sm-offset-3">移除</a>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                     {{ form.users.errors }}
+                     <label class="control-label col-md-2" for="{{ form.users.id_for_label }}">用户:</label>
+                    <div class="col-md-6">
+                     {{ form.users }}
+                     <a id="users-select-all">全选</a>
+                     <a id="users-deselect-all" class="col-sm-offset-3">移除</a>
+                    </div>
+                 </div>
+
+
+
+                        <div class="form-group">
+                                 {{ form.groupbak.errors }}
+                                 <label class="control-label col-md-2" for="{{ form.groupbak.id_for_label }}">备注:</label>
+                                 <div class="col-md-7">
+                                {{ form.groupbak }}
+                                 </div>
+                        </div>
+                         <div class="form-group">
+                             <label class="control-label col-md-2"></label>
+                            <div class="col-md-7">
+                                 <button class="btn btn-white" type="reset">重置</button><button class="btn btn-primary" type="submit" id="report">提交</button>
+                            </div>
+                          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block jscripts %}
+     <!-- Mainly scripts -->
+
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Peity -->
+    <script src="{% static 'js/plugins/peity/jquery.peity.min.js' %}"></script>
+    <script src="{% static 'js/demo/peity-demo.js' %}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+    <script src="{% static 'lou-multi-select/js/jquery.multi-select.js' %}"></script>
+    <script>
+       $('#menus-public-methods').multiSelect();
+       $('#menus-select-all').click(function(){
+          $('#menus-public-methods').multiSelect('select_all');
+          return false;
+       });
+      $('#menus-deselect-all').click(function(){
+        $('#menus-public-methods').multiSelect('deselect_all');
+        return false;
+      });
+    </script>
+
+    <script>
+       $('#users-public-methods').multiSelect();
+       $('#users-select-all').click(function(){
+          $('#users-public-methods').multiSelect('select_all');
+          return false;
+       });
+      $('#users-deselect-all').click(function(){
+        $('#users-public-methods').multiSelect('deselect_all');
+        return false;
+      });
+    </script>
+
+{% endblock %}

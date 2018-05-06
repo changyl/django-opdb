@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|用户管理|添加{% endblock %}
+
+{% block container %}
+       <div class="row wrapper border-bottom white-bg page-heading">
+       </div>
+        {% if messages %}
+            <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert">
+                &times;
+            </a>
+                {% for message in messages %}
+                    <strong>{{ message }}</strong>
+{#                <strong{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</strong>#}
+                {% endfor %}
+            </div>
+        {% endif %}
+<div class="row">
+  <div class="col-lg-6 col-md-offset-3">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>用户添加
+      </div>
+      <div class="widget-content padded">
+
+                    <form class="form-horizontal col-lg-5 col-md-offset-3" method="post" action="{% url 'users:user-add' %}">
+                         {% csrf_token %}
+                            {{ form.as_p }}
+                        <button class="btn btn-white" type="reset">重置</button>
+                        <button class="btn btn-primary" type="submit" id="report">提交</button>
+                    </form>
+               </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

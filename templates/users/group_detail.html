@@ -1,0 +1,135 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|资产管理|列表{% endblock %}
+
+{% block container %}
+
+       <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>资产管理</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{% url 'users:index' %}">主页</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'cmdb:idc-list' %}">资产管理</a>
+                        </li>
+                        <li class="active">
+                            <strong>用户列表</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+            <div class="col-lg-10 col-sm-offset-1">
+                <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                <div class="table-responsive">
+                <div class="">
+                    <a onclick="fnClickAddRow();" href="{% url 'users:group-update' list %}" class="btn btn-primary ">编辑</a>
+                </div>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">ID</td>
+                                <td>{{ list.id }}</td>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">名称</td>
+                                <td>{{ list.name }}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">创建时间</td>
+                                <td style="color: #2b2b2b">{{ list.create_date }}</td>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">创建人</td>
+                                <td style="color: #2b2b2b">{{ list.creator }}</td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">权限</td>
+                                <td style="color: #2b2b2b">{{ list.ID }}</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #b6bcbf;color: #2b2b2b">备注</td>
+                                <td style="color: #2b2b2b">{{ list.create_date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                </div>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+{% endblock %}
+
+
+ {% block jscripts %}
+   <!-- Mainly scripts -->
+
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- jQuery UI -->
+    <script src="{% static 'js/plugins/datatables/datatables.min.js' %}"></script>
+     <!-- Sweet alert -->
+    <script src="{% static 'js/plugins/sweetalert/sweetalert-dev.js' %}"></script>
+    <script>
+            $.ajaxSetup({
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+
+        var dt = $('.dataTables-example').DataTable({
+                dom: '<"html5buttons"B>lTfgitp',
+                ordering: true,
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+
+
+        $('.dataTables-example').on( 'click', 'button#execute', function () {
+                    var data =  dt.row( $(this).parents('tr') ).data();
+                    console.log(data)
+                        $.ajax({
+                            data:{"xlh":data[7],"db_bak":data[8],"sql_id":data[10]},
+                            url:"{% url 'cmdb:idc-list' %}",
+                            type:'post',
+                            timeout:"3000",
+                            cache:"false",
+                            success:function(str){
+                                swal("回滚完成！");
+                                    //dt.row().remove().draw( false );//删除这行的数据
+                            },
+                            error:function(err){
+                                swal("服务器失败！");
+                            }
+                        });
+                });
+    </script>
+{% endblock %}
