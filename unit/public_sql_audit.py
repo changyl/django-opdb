@@ -138,7 +138,7 @@ class Inception(object):
         :author:changyl
         """
 
-        conn = MySQLdb.connect(host='172.16.16.20', user='root', passwd='', db='', port=6669)
+        conn = MySQLdb.connect(host='', user='root', passwd='', db='', port=)
         cur = conn.cursor()
         cur.execute(main_sql.encode('utf-8'))
         result = cur.fetchall()
