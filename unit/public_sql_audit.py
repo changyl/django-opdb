@@ -443,3 +443,48 @@ class SqlAuditExecute:
         except Exception as e:
             print (e)
             return 0
+        
+
+class tasks(object):
+
+    def __init__(self,uid=None):
+        self.uid = uid
+
+    def get_task_info(self,uid):
+        sql = '''select sqlsha1 from tb_review_detail where sql_id in (select id from tb_review where creator={0} and 
+               audit_type=2 and create_time>=date_format(now(),'%Y-%m-%d 00:00:00')) and sqlsha1 !=""''' .format(uid)
+        cursor = connections['default'].cursor()
+        cursor.execute(sql)
+        row = cursor.fetchall()
+        arry = []
+        cursor.close()
+        conn = MySQLdb.connect(host='172.16.16.20', user='root', passwd='', db='', port=6669)
+        cur = conn.cursor()
+        for value in row:
+            sql_inception = '''inception get osc_percent "{0}";'''.format(value[0])
+            cur.execute(sql_inception.encode('utf-8'))
+            res = cur.fetchall()
+            if res is not None:
+                arry.append(res)
+        cur.close()
+        return arry
+
+    def get_all_task_info(self):
+        sql = '''select sqlsha1 from tb_review_detail where sql_id in (select id from tb_review where audit_type=2 
+            and create_time>=date_format(now(),'%Y-%m-%d 00:00:00')) and sqlsha1 !=""'''
+        cursor = connections['default'].cursor()
+        cursor.execute(sql)
+        row = cursor.fetchall()
+        arry = []
+        cursor.close()
+        conn = MySQLdb.connect(host='172.16.16.20', user='root', passwd='', db='', port=6669)
+        cur = conn.cursor()
+        for value in row:
+            sql_inception = '''inception get osc_percent "{0}";'''.format(value[0])
+            cur.execute(sql_inception.encode('utf-8'))
+            res = cur.fetchall()
+            if res is not None:
+                arry.append(res)
+        cur.close()
+        return arry
+
