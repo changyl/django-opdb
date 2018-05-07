@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% block title %}主页|SQL审核|上报{% endblock %}
+{% block title %}主页|OnlineDDL|上报{% endblock %}
 
 {% block extrastyle %}
    <link href="{% static 'css/plugins/codemirror/codemirror.css' %}" rel="stylesheet">
@@ -25,7 +25,7 @@
         <i class="icon-reorder"></i>SQL上报
       </div>
       <div class="widget-content padded">
-        <form class="form-horizontal" method="post" action="{% url 'sqlaudit:sql-add' %}">
+        <form class="form-horizontal" method="post" action="{% url 'onlineddl:sql-alter-add' %}">
                     {% csrf_token %}
                     <div class="form-group">
                         <label class="control-label col-md-1" >Schema:</label>

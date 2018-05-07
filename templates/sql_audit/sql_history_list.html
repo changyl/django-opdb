@@ -27,15 +27,15 @@
                             <thead>
                                <tr>
                                     <th>ID</th>
-                                    <th>db</th>
-                                    <th>sql</th>
+                                    <th>DBID</th>
+                                    <th>TAG</th>
+                                    <th>SQL</th>
                                     <th>审核状态</th>
                                     <th>上报人</th>
                                     <th>创建时间</th>
                                     <th>备注</th>
                                     <th>审核时间</th>
                                     <th>审核人</th>
-                                    <th>操作</th>
                                 </tr>
                             </thead>
                         </table>
@@ -81,12 +81,13 @@
                         { data: 1 },//字段名字和返回的json序列的key对应
                         { data: 2 },
                         { data: 3 },
-                        { data: 5 },
                         { data: 4 },
                         { data: 6 },
-                        { data: 8 },
+                        { data: 5 },
                         { data: 7 },
-                        { data: null }
+                        { data: 9 },
+                        { data: 8 }
+
                     ],
                 language: {
                     lengthMenu: '<select class="form-control input-xsmall">' + '<option value="1">1</option>' + '<option value="10">10</option>' + '<option value="20">20</option>' + '<option value="30">30</option>' + '<option value="40">40</option>' + '<option value="50">50</option>' + '</select>条记录',//左上角的分页大小显示。
@@ -107,35 +108,28 @@
                 pagingType: "full_numbers",//分页样式的类型
                 columnDefs: [
                     {
-                    targets: 3,//编辑
+                    targets: 4,//编辑
                     data: null,//下面这行，添加了编辑按钮和，删除按钮
                     //defaultContent:"<button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#myModal'><i class='fa  fa-edit'></i>修改</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-danger btn-sm' data-toggle='modal' data-target='#myModal'><i class='fa  fa-trash'></i>删除</button>"
                     //defaultContent: "<button id='editrow' class='btn btn-primary' type='button' style='margin-right:10px;'>编辑</button><button id='delrow' class='btn btn-primary' type='button'>删除</button>"
                     render: function (data, type, full) {
-                        if (full[3] == 0)
+                        if (full[4] == 0)
                             return "<p><span class='label label-default'>未经审核</span></p>";
-                        if (full[3] == 1)
+                        if (full[4] == 1)
                             return "<p><span class='label label-primary'>审核通过</span></p>";
-                        if (full[3] == 2)
+                        if (full[4] == 2)
                             return "<p><span class='label label-warning'>审核失败</span></p>";
-                        if (full[3] == 3)
+                        if (full[4] == 3)
                             return "<p><span class='label label-info'>正在执行</span></p>";
-                        if (full[3] == 4)
+                        if (full[4] == 4)
                             return "<p><span class='label label-danger'>执行失败</span></p>";
                         else
                             return "<p><span class='label label-success'>执行成功</span></p>";
                     }
                     },
-                    {sClass:"col_class","aTargets":[6]},
-                    {sClass:"col2_class","aTargets":[1]},
-                    {
-                    targets: 9,//编辑
-                    data: null,//下面这行，添加了编辑按钮和，删除按钮
-{#                    render: function (data, type, full) {#}
-{#                              return " <div class='btn-group'><button class='btn  btn-info dropdown-toggle' data-toggle='dropdown'>Action<span class='caret'></span></button><ul class='dropdown-menu'><li><a type='button'  href=#'  id='preexecute' data-title=" + full[0] + " ><i class='icon-check'></i>审核</a></li> <li> <a type='button' href='/sqlaudit/sql/audit/pre/result?sqlid="+data[0]+"'><i class='icon-file-text-alt'></i>审核结果</a></li> <li> <a type='button'  href=#'  id='execute' data-title=" + full[0] + "><i class='icon-spinner'></i>执行</a></li> <li> <a type='button' href='/sqlaudit/sql/audit/execute/result/?sqlid="+data[0]+"'><i class='icon-file'></i>执行结果</a></li> <li> <a type='button'  href=#'  id='edit' data-title=" + full[0] + "><i class='icon-edit'></i>编辑</a></li> <li> <a href='#'><i class='icon-remove'></i>删除</a></li></ul> </div>"#}
-{#                              return "<button type='button' class='btn btn-warning btn-sm ' ><i class='fa  fa-check'></i> 审核</button>&nbsp;<button type='button' class='btn btn-danger btn-sm ' id='execute' data-title=" + full[0] + "  data-toggle='modal' ><i class='fa  fa-space-shuttle'></i> 执行</button>&nbsp;<a type='button' href='/review/v1.0/review/detail/?sqlid="+data[0]+"' class='btn btn-info btn-sm' id='query'><i class='fa  fa-eye'></i> 审核结果</a>&nbsp;<button type='button'  class='btn btn-primary btn-sm' id='update' ><i class='fa  fa-edit'></i> 错误备注</button>"#}
-{#                              }#}
-                }]
+                    {sClass:"col_class","aTargets":[2]},
+                    {sClass:"col2_class","aTargets":[7]},
+                  ]
             });
     });
 

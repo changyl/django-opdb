@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'users',
     'cmdb',
     'sqlaudit',
+    'onlineddl',
+    'tasks',
 ]
 
 MIDDLEWARE = [
@@ -82,18 +84,18 @@ WSGI_APPLICATION = 'setting.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST':'',
+        'NAME': 'db_pattopn',
+        'USER': 'u_pattopn',
+        'PASSWORD': 'u_pattopn@2018',
+        'HOST':'172.16.16.217',
         'PORT':'3306',
-                },
+    },
     'data_backup': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'NAME': 'inception',
+        'USER': 'incept',
+        'PASSWORD': 'inception#2018',
+        'HOST': '172.16.16.20',
         'PORT': '3306',
                     }
 }

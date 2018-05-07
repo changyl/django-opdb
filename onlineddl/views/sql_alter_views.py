@@ -13,13 +13,19 @@ from unit.public_fun import Tools
 from unit.public_sql_audit import SqlAuditExecute,Inception
 from django.http import HttpResponse as write
 from django.db import connections
-from django.shortcuts import render
-# import sys
-# reload(sys)
-# sys.setdefaultencoding('utf8')
+from tasks.task import add
 
 decorators = [login_required]
-__all__ = ['SqlAuditCreateView', 'SqlAuditListView', 'PreResultView', 'ExecuteResultView', 'auditHistoryView']
+__all__ = ['SqlAuditCreateView', 'SqlAuditListView', 'PreResultView', 'ExecuteResultView', 'auditHistoryView','AjaxableResponseMixin']
+
+
+class AjaxSqlList:
+
+    def get_sql_list(self, request):
+        try:
+            return write(SqlAuditExecute.sql_alter_list(request=request))
+        except Exception as e:
+            return write(e)
 
 
 @method_decorator(decorators,name='dispatch')
@@ -34,20 +40,12 @@ class SqlAuditListView(ListView):
 
 
 @login_required()
-def get_sql_list(request):
-    try:
-        return write(SqlAuditExecute.sql_alter_list(request=request))
-    except Exception as e:
-        return write(e)
-
-
-@login_required()
 def sql_pre_audit(request):
     try:
-        db_name = request.POST.get('dbname',None)
+        dbid = request.POST.get('dbid',None)
         ct = request.POST.get('content',None)
         sql_id = request.POST.get('sqlid',None)
-        row = SqlAuditExecute.get_db_info(db_name=db_name)
+        row = SqlAuditExecute.get_db_info(db_id=dbid)
         audit_sql = Inception().preAuditExecute(user=row[1],password=row[2],host=row[0],port=row[3],dbname=row[4],content=ct)
         if request.method == "POST":
             result = Inception().inceptionQuery(audit_sql)
@@ -63,25 +61,26 @@ def sql_pre_audit(request):
         else:
             return write(0)
     except Exception as e:
-        return write(e)
+        return write(2)
 
 
 @login_required()
 def sql_execute_audit(request):
     try:
         sid = request.POST.get('sqlid', None)
-        db_name = request.POST.get('dbname', None)
+        dbid = request.POST.get('dbid', None)
         ct = request.POST.get('content', None)
-        row = SqlAuditExecute.get_db_info(db_name=db_name)
-        audit_sql = Inception().mosaic(user=row[1], password=row[2], host=row[0], port=row[3], dbname=row[4],
-                                            content=ct, request=request)
-        if request.method == "POST":
-            result = Inception().execute(request=request,main_sql=audit_sql,sql_id=sid)
-            return write(result)
-        else:
-            return write(0)
+        res = add.delay(a=1, b=2)
+        # row = SqlAuditExecute.get_db_info(db_id=dbid)
+        # audit_sql = Inception().mosaic(user=row[1], password=row[2], host=row[0], port=row[3], dbname=row[4],
+        #                                     content=ct, request=request)
+        # if request.method == "POST":
+        #     result = Inception().execute(request=request,main_sql=audit_sql,sql_id=sid)
+        #     return write(result)
+        # else:
+        #     return write(0)
     except Exception as e:
-        return write(e)
+        return 2
 
 
 @login_required()
@@ -113,18 +112,20 @@ class SqlAuditCreateView(SuccessMessageMixin, CreateView):
         form = self.form_class(self.request.POST)
         if form.is_valid():
             sql = str.lower(str(form.cleaned_data['content']))
-            if 'alter' in sql:
-                form.instance.content = '无法上报alter ddl sql，请在在线变更功能中执行！'
+            if 'alter' not in sql:
+                form.instance.content = '无法上报非alter ddl sql，请在SQL审核功能中上报！'
                 form.instance.creator = self.request.user.id
+                form.instance.audit_flag = '1'
                 return self.form_valid(form)
             else:
                 form.instance.creator = self.request.user.id
+                form.instance.audit_flag = '1'
                 return self.form_valid(form)
         else:
             return self.form_invalid(form)
 
     def get_success_url(self):
-        return reverse('sqlaudit:sql-list')
+        return reverse('onlineddl:sql-alter-list')
 
     # def get_success_message(self, cleaned_data):
     #     url = reverse_lazy('sqlaudit:sql-list')
@@ -135,7 +136,7 @@ class SqlAuditCreateView(SuccessMessageMixin, CreateView):
 
 @method_decorator(decorators,name='dispatch')
 class PreResultView(SuccessMessageMixin,ListView):
-    template_name = 'sql_audit/sql_audit_result.html'
+    template_name = 'online_ddl/sql_audit_result.html'
 
     def get_context_data(self, **kwargs):
         con = super(PreResultView, self).get_context_data(**kwargs)
@@ -197,7 +198,7 @@ def sql_rollback(request):
 @method_decorator(decorators,name='dispatch')
 class auditHistoryView(ListView):
     model = SqlAudit
-    template_name = 'sql_audit/sql_history_list.html'
+    template_name = 'online_ddl/sql_history_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(auditHistoryView, self).get_context_data(**kwargs)
@@ -209,7 +210,7 @@ class auditHistoryView(ListView):
 def get_sql_history_list(request):
     try:
         sql = SqlAuditExecute()
-        return write(sql.sqlHistoryList(request=request))
+        return write(sql.sql_alter_history_list(request=request))
     except Exception as e:
         return write(e)
 

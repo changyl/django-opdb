@@ -108,7 +108,7 @@ class Inception(object):
                     return 0
         except Exception as e:
             print (e)
-            return 0
+            return 2
 
 
     def preAuditExecute(self,user,password,host,port,dbname,content):
@@ -137,12 +137,17 @@ class Inception(object):
         :return:执行审核sql，返回审核结果
         :author:changyl
         """
-
-        conn = MySQLdb.connect(host='172.16.16.20', user='root', passwd='', db='', port=6669)
-        cur = conn.cursor()
-        cur.execute(main_sql.encode('utf-8'))
-        result = cur.fetchall()
-        return result
+        try:
+            conn = MySQLdb.connect(host='172.16.16.20', user='root', passwd='', db='', port=6669)
+            cur = conn.cursor()
+            print(main_sql)
+            cur.execute(main_sql)
+            result = cur.fetchall()
+            cur.close()
+            return result
+        except Exception as e:
+            print(e)
+            return 2
 
     def is_audit_on(self,id):
         q_res = '''select id from SQLAUDIT where id=%s and flag=2''' % (id)
@@ -217,6 +222,17 @@ class Inception(object):
             print (e)
             return 0
 
+    def update_audit_flag_err(self,sqlid):
+        try:
+            sql_dt_id = '''update tb_sql_audit set flag=4 where id={0}'''.format(sqlid)
+            cursor = connections['default'].cursor()
+            cursor.execute(sql_dt_id)
+            cursor.close()
+        except Exception as e:
+            print(e)
+            return 2
+
+
 
 class SqlAuditExecute:
 
@@ -233,12 +249,12 @@ class SqlAuditExecute:
 
             if request.user.is_staff == True:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date >date_format(now(),'%Y-%m-%d 00:00:00') and audit_flag=0'''
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
                     start, length)
             else:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date >date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and audit_flag=0'''.format(
             request.user.id)
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {1},{2}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {1},{2}'''.format(
                     request.user.id, start, length)
 
             cursor1 = connections['default'].cursor()
@@ -273,12 +289,12 @@ class SqlAuditExecute:
             length = request.GET.get('length', None)
             if request.user.is_staff == True:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date <date_format(now(),'%Y-%m-%d 00:00:00') and audit_flag=0'''
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=0) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=0) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
                     start, length)
             else:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date <date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and audit_flag=0'''.format(
             request.user.id)
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id order by t.id desc  limit {1},{2}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=0 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id order by t.id desc  limit {1},{2}'''.format(
                     request.user.id, start, length)
             cursor1 = connections['default'].cursor()
             cursor1.execute(sql_sum)
@@ -302,12 +318,13 @@ class SqlAuditExecute:
             return 0
 
     @staticmethod
-    def get_db_info(db_name):
-        sql_database_info = '''select host,user,passwd,port,db_name,creator from tb_cmdb_databases  where db_name="{0}"'''.format(
-            db_name)
+    def get_db_info(db_id):
+        sql_database_info = '''select host,user,passwd,port,db_name,creator from tb_cmdb_databases  where id="{0}"'''.format(
+            db_id)
         cursor = connections['default'].cursor()
         cursor.execute(sql_database_info)
         row = cursor.fetchone()
+        cursor.close()
         return row
 
     @staticmethod
@@ -358,12 +375,12 @@ class SqlAuditExecute:
 
             if request.user.is_staff == True:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date >date_format(now(),'%Y-%m-%d 00:00:00') and audit_flag=1'''
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
                     start, length)
             else:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date >date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and audit_flag=1'''.format(
             request.user.id)
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {1},{2}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_tag,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date>date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {1},{2}'''.format(
                     request.user.id, start, length)
 
             cursor1 = connections['default'].cursor()
@@ -399,12 +416,12 @@ class SqlAuditExecute:
             length = request.GET.get('length', None)
             if request.user.is_staff == True:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date <date_format(now(),'%Y-%m-%d 00:00:00') and audit_flag=1'''
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=1) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and r.audit_flag=1) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id  order by t.id desc  limit {0},{1}'''.format(
                     start, length)
             else:
                 sql_sum = '''select count(*) from tb_sql_audit where  create_date <date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and audit_flag=1'''.format(
             request.user.id)
-                sql_arry = '''select t.id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id order by t.id desc  limit {1},{2}'''.format(
+                sql_arry = '''select t.id,t.db_id,d.db_name,t.content,t.flag,t.create_date,t.username,t.remarks,a.username,t.audit_date from (SELECT r.id as id,db_id,content,create_date ,u.username,r.flag,r.remarks,r.auditor,r.audit_date  FROM  tb_sql_audit as r left join auth_user as u ON r.creator=u.id where  r.create_date<date_format(now(),'%Y-%m-%d 00:00:00') and creator={0} and r.audit_flag=1 ) as t left join tb_cmdb_databases d on d.id=t.db_id left join auth_user as a on t.auditor=a.id order by t.id desc  limit {1},{2}'''.format(
                     request.user.id, start, length)
             cursor1 = connections['default'].cursor()
             cursor1.execute(sql_sum)

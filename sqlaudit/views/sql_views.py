@@ -44,13 +44,14 @@ def get_sql_list(request):
 @login_required()
 def sql_pre_audit(request):
     try:
-        db_name = request.POST.get('dbname', None)
+        dbid = request.POST.get('dbid', None)
         ct = request.POST.get('content', None)
         sql_id = request.POST.get('sqlid', None)
-        row = SqlAuditExecute.get_db_info(db_name=db_name)
+        row = SqlAuditExecute.get_db_info(db_id=dbid)
         audit_sql = Inception().preAuditExecute(user=row[1], password=row[2], host=row[0], port=row[3], dbname=row[4], content=ct)
         if request.method == "POST":
             result = Inception().inceptionQuery(audit_sql)
+            print(result)
             flag = []
             for row in result:
                 flag.append(row[2])
@@ -70,9 +71,9 @@ def sql_pre_audit(request):
 def sql_execute_audit(request):
     try:
         sid = request.POST.get('sqlid', None)
-        db_name = request.POST.get('dbname', None)
+        dbid = request.POST.get('dbid', None)
         ct = request.POST.get('content', None)
-        row = SqlAuditExecute.get_db_info(db_name=db_name)
+        row = SqlAuditExecute.get_db_info(db_id=dbid)
         audit_sql = Inception().mosaic(user=row[1], password=row[2], host=row[0], port=row[3], dbname=row[4],
                                             content=ct, request=request)
         if request.method == "POST":
