@@ -25,7 +25,7 @@ __all__ = ['SqlAuditCreateView', 'SqlAuditListView', 'PreResultView', 'ExecuteRe
 @method_decorator(decorators,name='dispatch')
 class SqlAuditListView(ListView):
     model = SqlAudit
-    template_name = 'sql_audit/sql_list.html'
+    template_name = 'online_ddl/sql_alter_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(SqlAuditListView, self).get_context_data(**kwargs)
@@ -36,7 +36,7 @@ class SqlAuditListView(ListView):
 @login_required()
 def get_sql_list(request):
     try:
-        return write(SqlAuditExecute.sqlList(request=request))
+        return write(SqlAuditExecute.sql_alter_list(request=request))
     except Exception as e:
         return write(e)
 
@@ -100,12 +100,9 @@ def update_sql(request):
 class SqlAuditCreateView(SuccessMessageMixin, CreateView):
     model = SqlAudit
     form_class = SqlAuditForm
-    template_name = 'sql_audit/sql_add.html'
+    template_name = 'online_ddl/sql_alter_add.html'
 
     success_message = '上报SQL成功！'
-    cont = ['无法上报ALTER TBALE SQL！']
-    context = {}
-    context['messages'] = cont
 
     def get_context_data(self, **kwargs):
         context = super(SqlAuditCreateView, self).get_context_data(**kwargs)

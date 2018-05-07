@@ -5,7 +5,6 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
 
-{#    <link href="{% static 'stylesheets/bootstrap.min.css' %}" rel="stylesheet">#}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'stylesheets/font-awesome.css' %}" rel="stylesheet">
     <link href="{% static 'stylesheets/se7en-font.css' %}" rel="stylesheet">
@@ -152,7 +151,6 @@
                 <span aria-hidden="true" class="iconfont icon-shenhe"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-SQLshenhe"></use></svg></span>SQL审核<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="{% url 'sqlaudit:sql-add' %}">
-                    <span class="notifications label label-warning">New</span>
                     <p>
                       SQL上报
                     </p></a>
@@ -169,28 +167,21 @@
                 <span aria-hidden="true" class="se7en-tables"></span>表在线变更<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#">SQL上报</a>
+                    <a href="{% url 'onlineddl:sql-alter-add' %}">SQL上报</a>
                   </li>
                   <li>
-                    <a href="#">审核列表</a>
+                    <a href="{% url 'onlineddl:sql-alter-list' %}">审核列表</a>
                   </li>
                    <li>
                     <a href="#">执行进度</a>
                   </li>
-                  <li><a href="#">
-                    <div class="notifications label label-warning">
-                      New
-                    </div>
-                    <p>
-                      审核历史
-                    </p></a>
-
+                  <li>
+                    <a href="{% url 'onlineddl:sql-alter-history-list' %}">审核历史</a>
                   </li>
                 </ul>
               </li>
-
               <li><a href="#">
-                <span aria-hidden="true" class="icon icon-jiankong"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiankong"></use></svg></span>监控</a>
+                <span aria-hidden="true" class="icon icon-jiankong"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiankong"></use></svg></span>监控管理</a>
               </li>
 
               <li><a href="#">
