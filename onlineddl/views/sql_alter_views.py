@@ -215,4 +215,15 @@ def get_sql_history_list(request):
         return write(e)
 
 
+    
+@login_required()
+def view_task_admin(request):
+    # try:
+    #     if request.method == "GET":
+    #        # result = getUserInfo(request=request)
+    #         #task_list = tasks().get_all_task_info()
+    #         return render(request, 'review/tasks.html', context={'user':result,'task_list':task_list})
+    # except Exception,e:
+    #     logging.error(e)
+    pass
 
