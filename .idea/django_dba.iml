@@ -7,12 +7,14 @@
         <option name="settingsModule" value="django_dba/settings.py" />
         <option name="manageScript" value="$MODULE_DIR$/manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
+        <option name="doNotUseTestRunner" value="false" />
+        <option name="trackFilePattern" value="migrations" />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.6.5 virtualenv at C:\Users\Administrator\PycharmProjects\django-opdb\venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="R User Library" level="project" />
     <orderEntry type="library" name="R Skeletons" level="application" />

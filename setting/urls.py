@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^cmdb/', include('cmdb.urls.cmdb_urls')),
     url(r'^sqlaudit/', include('sqlaudit.urls.sql_audit_urls')),
     url(r'^onlineddl/', include('onlineddl.urls.sql_audit_urls')),
+    url(r'^monitor/', include('monitor.urls.lepus_url')),
 ]

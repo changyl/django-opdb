@@ -20,10 +20,11 @@ from django.contrib.auth.views import login_required
 from django.db.transaction import atomic
 from django.utils.decorators import method_decorator
 
-decorators = [login_required,atomic]
+decorators = [login_required, atomic]
 decorators_t = [atomic]
 
-@method_decorator(decorators,name='dispatch')
+
+@method_decorator(decorators, name='dispatch')
 class IndexView(generic.base.View):
 
     def get(self,*args, **kwargs):
@@ -71,9 +72,7 @@ class LoginView(FormView,generic.View):
         return reverse('users:index')
 
 
-
-
-@method_decorator(decorators,name='dispatch')
+@method_decorator(decorators, name='dispatch')
 class LogoutView(generic.base.RedirectView):
     permanent = False
     query_string = False
@@ -82,7 +81,6 @@ class LogoutView(generic.base.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         auth.logout(self.request)
         return super(LogoutView, self).get_redirect_url(*args, **kwargs)
-
 
     def dispatch(self, *args, **kwargs):
         return super(LogoutView, self).dispatch(*args, **kwargs)
@@ -97,6 +95,7 @@ class UserListView(ListView):
         con = super(UserListView,self).get_context_data(**kwargs)
         ob = Tools.get_content(request=self.request,context=con)
         return ob
+
 
 @method_decorator(decorators,name='dispatch')
 class UserCreateView(CreateView):

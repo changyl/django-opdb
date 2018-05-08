@@ -180,8 +180,25 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#">
-                <span aria-hidden="true" class="icon icon-jiankong"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiankong"></use></svg></span>监控管理</a>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+               <span aria-hidden="true" class="icon icon-jiankong"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiankong"></use></svg></span>监控管理<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">全局配置</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">MySQL</a>
+                  </li>
+                   <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">Oracle</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">Redis</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">SQL Server</a>
+                  </li>
+                </ul>
               </li>
 
               <li><a href="#">
