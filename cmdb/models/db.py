@@ -17,14 +17,15 @@ class databases(models.Model):
     passwd  =  models.CharField(u'密码',max_length=45)
     port  =  models.IntegerField(u'端口',)
     db_name = models.CharField(u'数据库名称',max_length=45)
-    create_time =   models.DateTimeField(u'创建时间',auto_now_add=True )
-    creator =   models.IntegerField(u'创建人ID',)
-    update_time =   models.DateTimeField(u'更新时间',auto_now=True)
-    updator =   models.IntegerField(u'更新人ID',)
-    flag    =   models.IntegerField(u'是否启用',choices=yn_flag)
+    create_time = models.DateTimeField(u'创建时间',auto_now_add=True )
+    creator = models.IntegerField(u'创建人ID',)
+    update_time = models.DateTimeField(u'更新时间',auto_now=True)
+    updator = models.IntegerField(u'更新人ID',)
+    flag = models.IntegerField(u'是否启用',choices=yn_flag)
     db_tag = models.CharField(u'数据库标签',max_length=45)
 
     class Meta:
         verbose_name = '数据库'
         verbose_name_plural = '数据库'
         db_table = "tb_cmdb_databases"  #重写数据表名称，覆盖类名
+        app_label = "cmdb"

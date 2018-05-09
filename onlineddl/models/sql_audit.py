@@ -22,6 +22,7 @@ class SqlAudit(models.Model):
         verbose_name_plural = 'SQL审核'
         db_table = "tb_sql_audit"  # 重写数据表名称，覆盖类名
         # db_tablespace = "" 表空间名称
+        app_label = "onlineddl"
 
     def __unicode__(self):
         return ('%s') % (self.id)

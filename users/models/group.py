@@ -16,6 +16,7 @@ class Group(models.Model):
         verbose_name_plural = '组'
         db_table = "auth_group"  # 重写数据表名称，覆盖类名
         # db_tablespace = "" 表空间名称
+        app_label = "users"
 
     def __unicode__(self):
         return ('%s') % (self.id)
@@ -33,6 +34,7 @@ class GroupMenus(models.Model):
         verbose_name_plural = '菜单与组关系'
         db_table = "tb_group_menus"  # 重写数据表名称，覆盖类名
         # db_tablespace = "" 表空间名称
+        app_label = "users"
 
     def __unicode__(self):
         return ('%s') % (self.menus_id)
@@ -50,6 +52,7 @@ class UserGroup(models.Model):
         verbose_name_plural = '用户组'
         db_table = "tb_user_groups"  # 重写数据表名称，覆盖类名
         # db_tablespace = "" 表空间名称
+        app_label = "users"
 
     def __unicode__(self):
         return ('%s') % (self.id)

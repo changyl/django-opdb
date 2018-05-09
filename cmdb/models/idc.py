@@ -32,3 +32,4 @@ class Idc(models.Model):
         verbose_name=u'资产管理-IDC'
         verbose_name_plural=u'资产管理-IDC'
         db_table = 'tb_cmdb_idc'
+        app_label = "cmdb"

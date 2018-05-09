@@ -88,22 +88,40 @@ DATABASES = {
         'NAME': 'db_pattopn',
         'USER': 'u_pattopn',
         'PASSWORD': 'u_pattopn@2018',
-        'HOST':'172.16.16.217',
-        'PORT':'3306',
-    },
-    'data_backup': {
+        'HOST': '172.16.16.217',
+        'PORT': '3306',
+                },
+     'lepus': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lepus',
+        'USER': 'lepus',
+        'PASSWORD': 'lepus@2018',
+        'HOST': '172.16.16.217',
+        'PORT': '3306',
+                },
+     'data_backup': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inception',
         'USER': 'incept',
-        'PASSWORD': '',
+        'PASSWORD': 'inception#2018',
         'HOST': '172.16.16.20',
         'PORT': '3306',
                     }
 }
 
+DATABASE_ROUTERS = ['setting.database_router.DatabaseAppsRouter']
+
+DATABASE_APPS_MAPPING = {
+    'monitor': 'lepus',
+    'onlineddl': 'default',
+    'sqlaudit': 'default',
+    'users': 'default',
+    'tasks': 'default',
+    'cmdb': 'default',
+    'unit': 'default',
+}
 
 # Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

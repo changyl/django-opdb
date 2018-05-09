@@ -38,3 +38,11 @@ class TotalConfigCreateView(CreateView):
         return self.success_message.format(
             url=url, name=self.object.username.encode("utf8")
         )
+
+
+@method_decorator(decorators, name='dispatch')
+class MysqlListView(ListView):
+
+    model = lepus_model.LepusMysqlConfig
+    #form_class = lepus_form.LepusMysqlForm
+    template_name = 'monitor/monitor_mysql_config.html'

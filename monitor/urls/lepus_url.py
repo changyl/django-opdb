@@ -7,7 +7,7 @@ app_name = 'monitor'
 
 urlpatterns = [
     url(r'^total/config/$',   views.TotalConfigCreateView.as_view(), name='monitor-total-config'),
-    # url(r'^logout/$',   views.LogoutView.as_view(), name='logout'),
+    url(r'^mysql/config/$',   views.MysqlListView.as_view(), name='monitor-mysql-db-list'),
     # url(r'^user/list/$',   views.UserListView.as_view(), name='user-list'),
     # url(r'^user/add/$',   views.UserCreateView.as_view(), name='user-add'),
     # url(r'^user/update/(?P<slug>[-\w]+)/$',   views.UserUpdateView.as_view(), name='user-update'),

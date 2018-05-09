@@ -20,6 +20,7 @@ class menus(models.Model):
         verbose_name_plural = '菜单配置'
         db_table = "tb_menus"  # 重写数据表名称，覆盖类名
         # db_tablespace = "" 表空间名称
+        app_label = "users"
 
     def __unicode__(self):
         return ('%s,%s,%s,%s,%s,%s,%s') % (self.id, self.menu_id, self.pid, self.sort, self.flag, self.ch_nm, self.url)
