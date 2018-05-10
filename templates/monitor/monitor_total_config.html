@@ -14,43 +14,116 @@
         <i class="icon-reorder"></i>监控配置
       </div>
       <div class="widget-content padded">
-        <form class="form-horizontal col-md-offset-2" method="post" action="{% url 'monitor:monitor-total-config' %}">
+        <form class="form-horizontal col-md-offset-2" method="post" action="{% url 'monitor:monitor-total-config-update' %}">
                 {% csrf_token %}
-
                 <div class="form-group">
                     <label class="control-label col-md-2">全局</label>
                     <div class="col-md-7">
-                      <select class="form-control"><option value="1">开启</option><option selected value="0">关闭</option></select>
+                      <select name='total' class="form-control">
+                          {% for monitor in object_list %}
+                            {% if monitor.0 == 'monitor' and monitor.1 == '1' %}
+                                <option value="1" selected>开启</option>
+                                <option value="0">关闭</option>
+                            {% elif monitor.0 == 'monitor' and monitor.1 == '0' %}
+                                <option value="1" >开启</option>
+                                <option value="0" selected>关闭</option>
+                            {% endif %}
+                          {% endfor %}
+                      </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">MySQL监控配置</label>
                     <div class="col-md-7">
-                      <select class="form-control"><option value="1">开启</option><option value="0">关闭</option></select>
+                      <select name='mysql' class="form-control">
+                          {% for monitor in object_list %}
+                            {% if monitor.0 == 'monitor_mysql' and monitor.1 == '1' %}
+                                    <option value="1" selected>开启</option>
+                                    <option value="0">关闭</option>
+                            {% elif  monitor.0 == 'monitor_mysql' and monitor.1 == '0' %}
+                                <option value="1" >开启</option>
+                                <option value="0" selected>关闭</option>
+                            {% endif %}
+                          {% endfor %}
+                      </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">Oracle监控配置</label>
                     <div class="col-md-7">
-                      <select class="form-control"><option value="1">开启</option><option value="0">关闭</option></select>
+                      <select name='oracle' class="form-control">
+                          {% for monitor in object_list %}
+                            {% if monitor.0 == 'monitor_oracle' and monitor.1 == '1' %}
+                                <option value="1" selected>开启</option>
+                                <option value="0">关闭</option>
+                            {% elif monitor.0 == 'monitor_oracle' and monitor.1 == '0' %}
+                                <option value="1" >开启</option>
+                                <option value="0" selected>关闭</option>
+                            {% endif %}
+                          {% endfor %}
+                      </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">Redis监控配置</label>
                     <div class="col-md-7">
-                      <select class="form-control"><option value="1">开启</option><option value="0">关闭</option></select>
+                      <select name='redis' class="form-control">
+                          {% for monitor in object_list %}
+                            {% if monitor.0 == 'monitor_redis' and monitor.1 == '1' %}
+                                <option value="1" selected>开启</option>
+                                <option value="0">关闭</option>
+                            {% elif  monitor.0 == 'monitor_redis' and monitor.1 == '0' %}
+                                <option value="1" >开启</option>
+                                <option value="0" selected>关闭</option>
+                            {% endif %}
+                          {% endfor %}
+                      </select>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2">SQL Server监控</label>
-                    <div class="col-md-7">
-                      <select class="form-control"><option value="1">开启</option><option value="0">关闭</option></select>
-                    </div>
-                </div>
+{#                <div class="form-group">#}
+{#                    <label class="control-label col-md-2">SQL Server监控</label>#}
+{#                    <div class="col-md-7">#}
+{#                      <select class="form-control" disabled>#}
+{#                          {% for monitor in object_list %}#}
+{#                            {% if monitor.0 == 'monitor_sqlserver' and monitor.1 == '1' %}#}
+{#                                <option value="1" selected>开启</option>#}
+{#                                <option value="0">关闭</option>#}
+{#                            {% elif monitor.0 == 'monitor_sqlserver' and monitor.1 == '0' %}#}
+{#                                <option value="1" >开启</option>#}
+{#                                <option value="0" selected>关闭</option>#}
+{#                            {% endif %}#}
+{#                          {% endfor %}#}
+{#                      </select>#}
+{#                    </div>#}
+{#                </div>#}
                 <div class="form-group">
                     <label class="control-label col-md-2">监控频率</label>
                     <div class="col-md-7">
-                      <select class="form-control"><option value="30">30秒</option><option value="60">1分钟</option><option value="90">1.5分钟</option><option value="120">2分钟</option></select>
+                      <select name='freq' class="form-control">
+                          {% for monitor in object_list %}
+                                {% if monitor.0 == 'frequency_monitor' and monitor.1 == '30' %}
+                                    <option value="30" selected>30秒</option>
+                                    <option value="60">1分钟</option>
+                                    <option value="90">1分钟30秒</option>
+                                    <option value="120">2分钟</option>
+                                {% elif monitor.0 == 'frequency_monitor' and monitor.1 == '60' %}
+                                    <option value="30">30秒</option>
+                                    <option value="60" selected>1分钟</option>
+                                    <option value="90">1分钟30秒</option>
+                                    <option value="120">2分钟</option>
+                                {% elif monitor.0 == 'frequency_monitor' and  monitor.1 == '90' %}
+                                    <option value="30">30秒</option>
+                                    <option value="60">1分钟</option>
+                                    <option value="90" selected>1分钟30秒</option>
+                                    <option value="120">2分钟</option>
+                                {% elif monitor.0 == 'frequency_monitor' and  monitor.1 == '120'%}
+                                    <option value="30">30秒</option>
+                                    <option value="60">1分钟</option>
+                                    <option value="90">1分钟30秒</option>
+                                    <option value="120" selected>2分钟</option>
+                                {% endif %}
+                          {% endfor %}
+                      </select>
                     </div>
                 </div>
 

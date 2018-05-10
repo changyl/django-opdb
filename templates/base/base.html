@@ -190,19 +190,34 @@
                     <a href="{% url 'monitor:monitor-mysql-db-list' %}">MySQL</a>
                   </li>
                    <li>
-                    <a href="{% url 'monitor:monitor-total-config' %}">Oracle</a>
+                    <a href="{% url 'monitor:monitor-oracle-db-list' %}">Oracle</a>
                   </li>
                   <li>
-                    <a href="{% url 'monitor:monitor-total-config' %}">Redis</a>
+                    <a href="{% url 'monitor:monitor-redis-db-list' %}">Redis</a>
                   </li>
-                  <li>
-                    <a href="{% url 'monitor:monitor-total-config' %}">SQL Server</a>
-                  </li>
+{#                  <li>#}
+{#                    <a href="{% url 'monitor:monitor-total-config' %}">SQL Server</a>#}
+{#                  </li>#}
                 </ul>
               </li>
 
-              <li><a href="#">
-                <span aria-hidden="true" class="se7en-charts"></span>慢查询管理</a>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+               <span aria-hidden="true" class="icon icon-wrench"></span>数据库管理<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+
+                  <li>
+                    <a href="{% url 'monitor:monitor-mysql-db-list' %}">MySQL</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-oracle-db-list' %}">Oracle</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-total-config' %}">MongoDB</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-redis-db-list' %}">Redis</a>
+                  </li>
+                </ul>
               </li>
 
               <li><a href="#">

@@ -1,0 +1,133 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|监控管理|MySQL监控添加{% endblock %}
+{% block extrastyle %}
+    <link href="{% static 'lou-multi-select/css/multi-select.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block container %}
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>MySQL监控添加
+      </div>
+      <div class="widget-content padded">
+
+                 <form class="form-horizontal col-md-offset-2" method="post" action="{% url 'monitor:monitor-mysql-db-add' %}">
+                {% csrf_token %}
+                        <div class="form-group">
+                             {{ form.host.errors }}
+                            <label class="control-label col-md-2" for="{{ form.host.id_for_label }}">主机名称:</label>
+                            <div class="col-md-7">
+                             {{ form.host }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.port.errors }}
+                            <label class="control-label col-md-2" for="{{ form.port.id_for_label }}">端口:</label>
+                            <div class="col-md-7">
+                             {{ form.port }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.username.errors }}
+                            <label class="control-label col-md-2" for="{{ form.username.id_for_label }}">用户名:</label>
+                            <div class="col-md-7">
+                             {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.password.errors }}
+                            <label class="control-label col-md-2" for="{{ form.password.id_for_label }}">密码:</label>
+                            <div class="col-md-7">
+                             {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.tags.errors }}
+                            <label class="control-label col-md-2" for="{{ form.tags.id_for_label }}">标签:</label>
+                            <div class="col-md-7">
+                             {{ form.tags }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.monitor.errors }}
+                            <label class="control-label col-md-2" for="{{ form.monitor.id_for_label }}">监控状态:</label>
+                            <div class="col-md-7">
+                             {{ form.monitor }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.display_order.errors }}
+                            <label class="control-label col-md-2" for="{{ form.display_order.id_for_label }}">排序:</label>
+                            <div class="col-md-7">
+                             {{ form.display_order }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.is_multi_source.errors }}
+                            <label class="control-label col-md-2" for="{{ form.is_multi_source.id_for_label }}">多源复制监控状态:</label>
+                            <div class="col-md-7">
+                             {{ form.is_multi_source }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                             <label class="control-label col-md-2"></label>
+                            <div class="col-md-7">
+                                 <button class="btn btn-warning" type="reset">连通测试</button><button class="btn btn-primary" type="submit" id="report">保存</button>
+                            </div>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
+
+{% block jscripts %}
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- jQuery UI -->
+    <script src="{% static 'js/plugins/datatables/datatables.min.js' %}"></script>
+     <!-- Sweet alert -->
+    <script src="{% static 'js/plugins/sweetalert/sweetalert-dev.js' %}"></script>
+
+    <script>
+            $.ajaxSetup({
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+
+        var dt = $('.dataTables-example').DataTable({
+                dom: '<"html5buttons"B>lTfgitp',
+                ordering: true,
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+
+    </script>
+
+{% endblock %}
