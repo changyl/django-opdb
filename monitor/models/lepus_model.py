@@ -44,7 +44,7 @@ class LepusMysqlConfig(models.Model):
 class LepusRedis(models.Model):
     id = models.AutoField('ID', primary_key=True)
     host = models.CharField('主机', max_length=255, blank=True, default='')
-    port = models.CharField('端口', max_length=100, default='6479')
+    port = models.CharField('端口', max_length=100, default='6379')
     password = models.CharField('密码', max_length=30, default='')
     tags = models.CharField('标签', max_length=100, default='')
     monitor = models.SmallIntegerField('监控设置', max_length=1, default='0')

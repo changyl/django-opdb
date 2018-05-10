@@ -7,6 +7,15 @@
 
 
 {% block container %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <button class="close" data-dismiss="alert" type="button">&times;</button>{{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
 <div class="row">
   <div class="col-lg-12">
     <div class="widget-container fluid-height clearfix">

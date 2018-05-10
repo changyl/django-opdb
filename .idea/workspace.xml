@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a7c54f8-111f-4f13-82a1-a86b5b16b123" name="Default" comment="添加监控代码monitor">
-      <change afterPath="$PROJECT_DIR$/setting/database_router.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/monitor/monitor_oracle_config.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/monitor/monitor_redis_config.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/django_dba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django_dba.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/models/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/models/db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmdb/models/idc.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmdb/models/idc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/forms/lepus_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/forms/lepus_form.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor/models/lepus_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/models/lepus_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/urls/lepus_url.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/urls/lepus_url.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitor/views/lepus_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/views/lepus_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/onlineddl/models/sql_audit.py" beforeDir="false" afterPath="$PROJECT_DIR$/onlineddl/models/sql_audit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setting/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/setting/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models/menus.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models/menus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cmdb/db_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cmdb/db_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_mysql.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_mysql.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_oracle.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_oracle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_redis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_redis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sql_audit/sql_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sql_audit/sql_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users/group_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/group_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/user_list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,68 +31,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lepus_model.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lepus_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monitor/models/lepus_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="28" />
+            <state relative-caret-position="156">
+              <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lepus_form.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monitor/forms/lepus_form.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lepus_url.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monitor/urls/lepus_url.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="9" column="88" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="88" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lepus_view.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monitor/views/lepus_view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-103">
-              <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monitor_mysql_config.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monitor_oracle_config.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_oracle_config.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -138,7 +81,6 @@
         <option value="$PROJECT_DIR$/unit/public_fun.py" />
         <option value="$PROJECT_DIR$/cmdb/forms.py" />
         <option value="$PROJECT_DIR$/templates/sql_audit/sql_add.html" />
-        <option value="$PROJECT_DIR$/templates/sql_audit/sql_list.html" />
         <option value="$PROJECT_DIR$/sqlaudit/views/sql_views.py" />
         <option value="$PROJECT_DIR$/unit/public_sql_audit.py" />
         <option value="$PROJECT_DIR$/onlineddl/forms/forms.py" />
@@ -148,7 +90,6 @@
         <option value="$PROJECT_DIR$/setting/urls.py" />
         <option value="$PROJECT_DIR$/templates/monitor/monitor_total_config.html" />
         <option value="$PROJECT_DIR$/setting/database_router.py" />
-        <option value="$PROJECT_DIR$/monitor/models/lepus_model.py" />
         <option value="$PROJECT_DIR$/onlineddl/models/sql_audit.py" />
         <option value="$PROJECT_DIR$/cmdb/models/db.py" />
         <option value="$PROJECT_DIR$/cmdb/models/idc.py" />
@@ -157,10 +98,20 @@
         <option value="$PROJECT_DIR$/monitor/views/lepus_view.py" />
         <option value="$PROJECT_DIR$/templates/base/base.html" />
         <option value="$PROJECT_DIR$/monitor/urls/lepus_url.py" />
-        <option value="$PROJECT_DIR$/setting/settings.py" />
         <option value="$PROJECT_DIR$/monitor/forms/lepus_form.py" />
         <option value="$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html" />
         <option value="$PROJECT_DIR$/templates/monitor/monitor_oracle_config.html" />
+        <option value="$PROJECT_DIR$/setting/settings.py" />
+        <option value="$PROJECT_DIR$/templates/monitor/monitor_redis.html" />
+        <option value="$PROJECT_DIR$/templates/monitor/monitor_mysql.html" />
+        <option value="$PROJECT_DIR$/templates/monitor/monitor_oracle.html" />
+        <option value="$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html" />
+        <option value="$PROJECT_DIR$/templates/sql_audit/sql_list.html" />
+        <option value="$PROJECT_DIR$/templates/users/group_list.html" />
+        <option value="$PROJECT_DIR$/templates/users/user_list.html" />
+        <option value="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" />
+        <option value="$PROJECT_DIR$/templates/cmdb/db_list.html" />
+        <option value="$PROJECT_DIR$/monitor/models/lepus_model.py" />
       </list>
     </option>
   </component>
@@ -171,15 +122,14 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1926" />
-    <option name="height" value="1032" />
+    <option name="width" value="1927" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -187,10 +137,22 @@
               <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
               <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
+              <item name="monitor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
+              <item name="monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,6 +169,136 @@
       <recent name="C:\Users\44659\PycharmProjects\django-opdb\templates\online_alter" />
       <recent name="C:\Users\44659\PycharmProjects\django-opdb\templates\sql_audit" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/django_dba.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/monitor/forms/lepus_form.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/monitor/models/lepus_model.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/monitor/urls/lepus_url.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/monitor/views/lepus_view.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/setting/settings.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/base/base.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_total_config.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_mysql.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_mysql_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_mysql_update_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_oracle.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_oracle_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_oracle_update_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_redis.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_redis_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_redis_update_form.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/unit/public_monitor.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_oracle_config.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/templates/monitor/monitor_redis_config.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -444,7 +536,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1422" height="762" extended-state="0" />
+    <frame x="0" y="0" width="1423" height="763" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49963316" weight="0.32854864" />
@@ -452,9 +544,9 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49963316" weight="0.32854864" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49853373" visible="true" weight="0.3455414" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49853373" visible="true" weight="0.34499204" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3296" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.17008798" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.17216118" />
       <window_info anchor="right" id="R Packages" order="3" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="3" />
@@ -510,48 +602,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="添加监控代码monitor" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/setting/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sql_audit/sql_audit_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sql_audit/sql_exec_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="132" column="43" lean-forward="true" selection-start-line="132" selection-start-column="43" selection-end-line="132" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sql_audit/sql_history_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="72" column="67" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sqlaudit/urls/sql_audit_urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/contrib/messages/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -600,13 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sql_audit/sql_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="257" column="38" selection-start-line="257" selection-start-column="38" selection-end-line="257" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/online_alter/sql_add.html" />
     <entry file="file://$PROJECT_DIR$/sqlaudit/views/sql_views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -622,13 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/unit/public_fun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/fields/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -640,20 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="66" column="128" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/urls/users_urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="7" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -699,11 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/users/user_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-858" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/online_ddl/sql_alter_add.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -725,9 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_redis_config.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_total_config.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -739,9 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="e#42#70#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,16 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/models/lepus_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setting/database_router.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-988">
@@ -809,51 +810,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monitor/forms/lepus_form.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="520">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/urls/lepus_url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="88" selection-start-line="9" selection-start-column="67" selection-end-line="9" selection-end-column="88" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/cmdb/cmdb_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="43" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setting/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="95" column="24" lean-forward="true" selection-start-line="95" selection-start-column="24" selection-end-line="95" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monitor/views/lepus_view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="1482">
           <caret line="57" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
@@ -862,6 +829,138 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_mysql.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="10" selection-start-line="10" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="e#412#419#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_oracle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="e#410#417#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/monitor/monitor_redis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="13" column="100" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sql_audit/sql_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/online_ddl/sql_history_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/users/group_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/users/user_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cmdb/cmdb_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cmdb/db_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/views/lepus_view.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1337">
+          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unit/public_fun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/forms/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/urls/lepus_url.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/urls/users_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="87" column="29" lean-forward="true" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monitor/models/lepus_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
