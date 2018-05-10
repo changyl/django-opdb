@@ -220,10 +220,17 @@
                 </ul>
               </li>
 
-              <li><a href="#">
-                <span aria-hidden="true" class="icon icon-beifenguanli"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-beifenguanli"></use></svg></span>备份管理</a>
+              <li class="dropdown"><a data-toggle="dropdown" href="#">
+                <span aria-hidden="true" class="icon icon-beifenguanli"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-beifenguanli"></use></svg></span>备份管理<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li>
+                    <a href="{% url 'monitor:monitor-mysql-db-list' %}">备份任务</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'monitor:monitor-oracle-db-list' %}">备份集列表</a>
+                  </li>
+                </ul>
               </li>
-
 
               <li><a href="#">
                 <span aria-hidden="true" class="icon icon-test"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-8"></use></svg></span>执行计划审核</a>

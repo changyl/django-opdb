@@ -14,7 +14,7 @@ class Lepus(models.Model):
         app_label = "monitor"
 
     @staticmethod
-    def get_absolute_url(self):
+    def get_absolute_url():
         return reverse('monitor:monitor-total-config')
 
 
@@ -37,7 +37,7 @@ class LepusMysqlConfig(models.Model):
         app_label = "monitor"
 
     @staticmethod
-    def get_absolute_url(self):
+    def get_absolute_url():
         return reverse('monitor:monitor-total-config')
 
 
@@ -58,7 +58,7 @@ class LepusRedis(models.Model):
         app_label = "monitor"
 
     @staticmethod
-    def get_absolute_url(self):
+    def get_absolute_url():
         return reverse('monitor:monitor-redis-db-list')
 
 
@@ -81,5 +81,5 @@ class LepusOracle(models.Model):
         app_label = "monitor"
 
     @staticmethod
-    def get_absolute_url(self):
+    def get_absolute_url():
         return reverse('monitor:monitor-redis-db-list')

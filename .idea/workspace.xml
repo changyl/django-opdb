@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a7c54f8-111f-4f13-82a1-a86b5b16b123" name="Default" comment="添加监控代码monitor">
+      <change afterPath="$PROJECT_DIR$/backup/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup/forms/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup/models/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup/models/backup_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup/urls/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup/views/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/django_dba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/django_dba.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitor/models/lepus_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/models/lepus_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setting/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/setting/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cmdb/db_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cmdb/db_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_mysql.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_mysql.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_oracle.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_oracle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/monitor/monitor_redis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/monitor/monitor_redis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/online_ddl/sql_alter_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/sql_audit/sql_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sql_audit/sql_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users/group_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/group_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/users/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/user_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +29,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="lepus_model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lepus_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monitor/models/lepus_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
+            <state relative-caret-position="234">
+              <caret line="21" column="49" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="227" column="23" selection-start-line="227" selection-start-column="23" selection-end-line="227" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="backup_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backup/models/backup_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -96,7 +115,6 @@
         <option value="$PROJECT_DIR$/users/models/group.py" />
         <option value="$PROJECT_DIR$/users/models/menus.py" />
         <option value="$PROJECT_DIR$/monitor/views/lepus_view.py" />
-        <option value="$PROJECT_DIR$/templates/base/base.html" />
         <option value="$PROJECT_DIR$/monitor/urls/lepus_url.py" />
         <option value="$PROJECT_DIR$/monitor/forms/lepus_form.py" />
         <option value="$PROJECT_DIR$/templates/monitor/monitor_mysql_config.html" />
@@ -111,7 +129,9 @@
         <option value="$PROJECT_DIR$/templates/users/user_list.html" />
         <option value="$PROJECT_DIR$/templates/cmdb/cmdb_list.html" />
         <option value="$PROJECT_DIR$/templates/cmdb/db_list.html" />
+        <option value="$PROJECT_DIR$/templates/base/base.html" />
         <option value="$PROJECT_DIR$/monitor/models/lepus_model.py" />
+        <option value="$PROJECT_DIR$/backup/models/backup_model.py" />
       </list>
     </option>
   </component>
@@ -136,17 +156,6 @@
             <path>
               <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
               <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
-              <item name="monitor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="django-opdb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="django-opdb" type="462c0819:PsiDirectoryNode" />
-              <item name="monitor" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -523,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525800582909</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改监控功能bug">
+      <created>1525960483733</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525960483733</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -540,11 +556,11 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49963316" weight="0.32854864" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5014663" side_tool="true" weight="0.3375796" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50183153" side_tool="true" weight="0.34499204" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49963316" weight="0.32854864" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49853373" visible="true" weight="0.34499204" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4981685" visible="true" weight="0.34499204" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3296" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.17216118" />
       <window_info anchor="right" id="R Packages" order="3" />
@@ -599,16 +615,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加监控代码monitor" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加监控代码monitor" />
+    <MESSAGE value="修改监控功能bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改监控功能bug" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/messages/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/views/generic/edit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2643">
@@ -801,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="193" column="23" lean-forward="true" selection-start-line="193" selection-start-column="23" selection-end-line="193" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monitor/forms/lepus_form.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -954,10 +957,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="227" column="23" selection-start-line="227" selection-start-column="23" selection-end-line="227" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monitor/models/lepus_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
+        <state relative-caret-position="234">
+          <caret line="21" column="49" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup/models/backup_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
