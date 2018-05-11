@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^sqlaudit/', include('sqlaudit.urls.sql_audit_urls')),
     url(r'^onlineddl/', include('onlineddl.urls.sql_audit_urls')),
     url(r'^monitor/', include('monitor.urls.lepus_url')),
+    url(r'^backup/', include('backup.urls.backup_url')),
 ]

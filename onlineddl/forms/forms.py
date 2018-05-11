@@ -3,7 +3,6 @@
 
 
 from django import forms as f
-from django.contrib.auth.models import User
 from django.forms import ModelForm
 from sqlaudit.models.sql_audit import SqlAudit
 from unit.public_fun import Tools

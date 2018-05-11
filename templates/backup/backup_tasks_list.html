@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|备份管理|备份任务列表{% endblock %}
+{% block extrastyle %}
+    <link href="{% static 'lou-multi-select/css/multi-select.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block container %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <button class="close" data-dismiss="alert" type="button">&times;</button>{{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>备份任务列表
+      </div>
+      <div class="widget-content padded">
+                <div class="">
+                    <a onclick="fnClickAddRow();" href="{% url 'backup:backup-tasks-add' %}" class="btn btn-danger ">添加备份任务</a>
+                </div>
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                              <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>主机ID</th>
+                                    <th>主机</th>
+                                    <th>备份粒度</th>
+                                    <th>数据库名称</th>
+                                    <th>表名称</th>
+                                    <th>用户</th>
+                                    <th>端口</th>
+                                    <th>默认文件</th>
+                                    <th>日志路径</th>
+                                    <th>备份路径</th>
+                                    <th>备份方式</th>
+                                    <th>是否压缩</th>
+                                    <th>备份级别</th>
+                                    <th>是否开启备份</th>
+                                    <th>创建时间</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                 {% for db in object_list %}
+                                    <tr>
+                                      <td>{{ db.id }}</td>
+                                      <td>{{ db.host_id }}</td>
+                                      <td><a href="{% url 'backup:backup-tasks-update' db.id %}">{{ db.host }}</a></td>
+                                      {% if db.grained == 1 %}
+                                          <td><span class="label label-primary">全备</span></td>
+                                      {% elif db.grained == 2 %}
+                                          <td><span class="label label-success">SCHEMA</span></td>
+                                      {% else %}
+                                          <td><span class="label label-success">表</span></td>
+                                      {% endif %}
+                                      {% if db.type == 1 %}
+                                          <td><span class="label label-success">逻辑备份</span></td>
+                                      {% elif db.type == 2 %}
+                                          <td><span class="label label-info">物理备份</span></td>
+                                      {% else %}
+                                          <td><span class="label label-warning">None</span></td>
+                                      {% endif %}
+                                      <td>{{ db.dbname }}</td>
+                                      <td>{{ db.tables }}</td>
+                                      <td>{{ db.username }}</td>
+                                      <td>{{ db.port }}</td>
+                                      <td>{{ db.defaults_file }}</td>
+                                      <td>{{ db.logdir }}</td>
+                                      <td>{{ db.backupdir }}</td>
+
+
+                                      {% if db.gz == 1 %}
+                                          <td><span class="label label-success">压缩</span></td>
+                                      {% elif db.gz == 2 %}
+                                          <td><span class="label label-danger">不压缩</span></td>
+                                      {% else %}
+                                          <td><span class="label label-warning">None</span></td>
+                                      {% endif %}
+
+
+                                      {% if db.level == 1 %}
+                                        <td><span class="label label-success">一般</span></td>
+                                      {% elif db.level == 2 %}
+                                        <td><span class="label label-warning">紧急</span></td>
+                                      {% else %}
+                                        <td><span class="label label-danger">非常紧急</span></td>
+                                      {% endif %}
+                                      {% if db.flag == 1 %}
+                                        <td><span class="label label-success">开启</span></td>
+                                      {% else %}
+                                        <td><span class="label label-default">关闭</span></td>
+                                      {% endif %}
+                                      <td>{{ db.create_time }}</td>
+                                    </tr>
+                                 {% endfor %}
+                              </tbody>
+                            </table>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
+
+{% block jscripts %}
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- jQuery UI -->
+    <script src="{% static 'js/plugins/datatables/datatables.min.js' %}"></script>
+     <!-- Sweet alert -->
+    <script src="{% static 'js/plugins/sweetalert/sweetalert-dev.js' %}"></script>
+
+    <script>
+            $.ajaxSetup({
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+
+        var dt = $('.dataTables-example').DataTable({
+                dom: '<"html5buttons"B>lTfgitp',
+                ordering: true,
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+
+    </script>
+
+{% endblock %}

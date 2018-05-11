@@ -1,0 +1,161 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}主页|备份管理|备份任务修改{% endblock %}
+{% block extrastyle %}
+    <link href="{% static 'lou-multi-select/css/multi-select.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block container %}
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="widget-container fluid-height clearfix">
+      <div class="heading">
+        <i class="icon-reorder"></i>备份任务修改
+      </div>
+      <div class="widget-content padded">
+
+                 <form class="form-horizontal col-md-offset-2" method="post" action="{% url 'backup:backup-tasks-add' %}">
+                {% csrf_token %}
+                        <div class="form-group">
+                             {{ form.host_id.errors }}
+                            <label class="control-label col-md-2" for="{{ form.host_id.id_for_label }}">数据库ID:</label>
+                            <div class="col-md-7">
+                             {{ form.host_id }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.host.errors }}
+                            <label class="control-label col-md-2" for="{{ form.host.id_for_label }}">主机:</label>
+                            <div class="col-md-7">
+                             {{ form.host }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.dbname.errors }}
+                            <label class="control-label col-md-2" for="{{ form.dbname.id_for_label }}">数据库名称:</label>
+                            <div class="col-md-7">
+                             {{ form.dbname }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.tables.errors }}
+                            <label class="control-label col-md-2" for="{{ form.tables.id_for_label }}">数据库名称:</label>
+                            <div class="col-md-7">
+                             {{ form.tables }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.username.errors }}
+                            <label class="control-label col-md-2" for="{{ form.username.id_for_label }}">用户:</label>
+                            <div class="col-md-7">
+                             {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.password.errors }}
+                            <label class="control-label col-md-2" for="{{ form.password.id_for_label }}">密码:</label>
+                            <div class="col-md-7">
+                             {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.port.errors }}
+                            <label class="control-label col-md-2" for="{{ form.port.id_for_label }}">端口:</label>
+                            <div class="col-md-7">
+                             {{ form.port }}
+                            </div>
+                        </div>
+                            <div class="form-group">
+                             {{ form.defaults_file.errors }}
+                            <label class="control-label col-md-2" for="{{ form.defaults_file.id_for_label }}">默认文件:</label>
+                            <div class="col-md-7">
+                             {{ form.defaults_file }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.logdir.errors }}
+                            <label class="control-label col-md-2" for="{{ form.logdir.id_for_label }}">日志路径:</label>
+                            <div class="col-md-7">
+                             {{ form.logdir }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.backupdir.errors }}
+                            <label class="control-label col-md-2" for="{{ form.backupdir.id_for_label }}">备份路径:</label>
+                            <div class="col-md-7">
+                             {{ form.backupdir }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.level.errors }}
+                            <label class="control-label col-md-2" for="{{ form.level.id_for_label }}">备份级别:</label>
+                            <div class="col-md-7">
+                             {{ form.level }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             {{ form.flag.errors }}
+                            <label class="control-label col-md-2" for="{{ form.flag.id_for_label }}">备份状态:</label>
+                            <div class="col-md-7">
+                             {{ form.flag }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                             <label class="control-label col-md-2"></label>
+                            <div class="col-md-7">
+                                 <button class="btn btn-warning" type="reset">连通测试</button><button class="btn btn-primary" type="submit" id="report">保存</button>
+                            </div>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+{% endblock %}
+
+{% block jscripts %}
+    <script src="{% static 'js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'js/inspinia.js' %}"></script>
+    <script src="{% static 'js/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- jQuery UI -->
+    <script src="{% static 'js/plugins/datatables/datatables.min.js' %}"></script>
+     <!-- Sweet alert -->
+    <script src="{% static 'js/plugins/sweetalert/sweetalert-dev.js' %}"></script>
+
+    <script>
+            $.ajaxSetup({
+                    data: {csrfmiddlewaretoken: '{{ csrf_token }}' }
+             });
+
+        var dt = $('.dataTables-example').DataTable({
+                dom: '<"html5buttons"B>lTfgitp',
+                ordering: true,
+                buttons: [
+                    {extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+
+    </script>
+
+{% endblock %}

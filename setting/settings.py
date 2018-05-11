@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'onlineddl',
     'tasks',
     'monitor',
+    'backup',
 ]
 
 MIDDLEWARE = [
@@ -83,13 +84,37 @@ WSGI_APPLICATION = 'setting.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-   
+     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_pattopn',
+        'USER': 'u_pattopn',
+        'PASSWORD': 'u_pattopn@2018',
+        'HOST': '172.16.16.217',
+        'PORT': '3306',
+                },
+     'lepus': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lepus',
+        'USER': 'lepus',
+        'PASSWORD': 'lepus@2018',
+        'HOST': '172.16.16.217',
+        'PORT': '3306',
+                },
+     'data_backup': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inception',
+        'USER': 'incept',
+        'PASSWORD': 'inception#2018',
+        'HOST': '172.16.16.20',
+        'PORT': '3306',
+                    }
 }
 
 DATABASE_ROUTERS = ['setting.database_router.DatabaseAppsRouter']
 
 DATABASE_APPS_MAPPING = {
     'monitor': 'lepus',
+    'backup': 'default',
     'onlineddl': 'default',
     'sqlaudit': 'default',
     'users': 'default',
